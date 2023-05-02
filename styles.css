@@ -1,0 +1,227 @@
+@layer normalize, open-props, base, demo, whimsy;
+
+@import url("https://unpkg.com/normalize.css") layer(normalize);
+@import url("https://unpkg.com/open-props/open-props.min.css") layer(open-props);
+@import url("https://unpkg.com/open-props/normalize.min.css") layer(open-props);
+
+@layer whimsy {
+  @media (prefers-reduced-motion: no-preference) {
+    .form-group:has(:valid) .word span {
+      display: inline-block;
+      animation: jump 0.25s calc(var(--index) * 0.05s);
+    }
+    @keyframes jump {
+      50% {
+        transform: translateY(-50%);
+      }
+    }
+    .form-group:has(:invalid:not(:focus):not(:placeholder-shown)) {
+      animation: shake 0.2s;
+    }
+    @keyframes shake {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      20%,
+      40%,
+      60%,
+      80% {
+        transform: translateX(-2%);
+      }
+      10%,
+      30%,
+      50%,
+      70%,
+      90% {
+        transform: translateX(2%);
+      }
+    }
+  }
+  
+  .word {
+    display: flex;
+  }
+
+  .form-group:has(:placeholder-shown:not(:focus)) .word span {
+    animation: none;
+  }
+
+  .form-group:has(:placeholder-shown) {
+    --color: var(--blur);
+  }
+
+  .form-group:has(:invalid:not(:focus):not(:placeholder-shown))
+    .form-group__error {
+    display: block;
+  }
+}
+
+@layer demo {
+  :root {
+    --red: hsl(18 100% 50%);
+    --green: hsl(130 52% 46%);
+    --yellow: hsl(44 83% 53%);
+    --blue: hsl(215 100% 53%);
+    --grey: hsl(0 0% 45%);
+    --white: hsl(0 0% 100%);
+    --text: var(--gray-5);
+    --transition: 0.2s;
+    --valid: var(--green);
+    --invalid: var(--red);
+    --focus: var(--yellow);
+    --blur: var(--gray-0);
+    --disabled: var(--grey);
+  }
+
+  .form-group {
+    --color: var(--white);
+  }
+
+  .form-group:has(:invalid) {
+    --color: var(--red);
+  }
+
+  .form-group:has(:placeholder-shown) {
+    --color: var(--white);
+  }
+
+  .form-group:has(:focus) {
+    --color: var(--yellow);
+  }
+
+  .form-group:has(:valid) {
+    --color: var(--green);
+  }
+
+  label {
+    color: var(--color);
+  }
+
+  input {
+    border: 4px solid var(--color);
+  }
+
+  input:focus-visible {
+    outline-color: var(--color);
+  }
+
+  input::placeholder {
+    color: transparent;
+  }
+
+  form:valid [type="submit"] {
+    background: var(--valid);
+    color: var(--gray-1);
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  :where(html) {
+    background-color: transparent;
+    color-scheme: none;
+  }
+
+  body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    overflow: hidden;
+    margin: 0;
+    background-color: var(--gray-9);
+    font-size: 1rem;
+  }
+
+  form {
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  .form-group {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  label {
+    font-family: sans-serif;
+    display: flex;
+    font-weight: bold;
+    padding-right: 1rem;
+    transform-style: preserve-3d;
+    transition: color var(--transition);
+    font-size: 1.25rem;
+    grid-row: 1;
+  }
+  input {
+    grid-row: 1;
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    font-weight: 400;
+    transition: border-color var(--transition);
+  }
+
+  input:focus-visible {
+    outline-color: var(--color);
+  }
+
+  input::placeholder {
+    color: transparent;
+  }
+
+  button {
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+    background: var(--disabled);
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--gray-5);
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .word {
+    display: flex;
+  }
+
+  label span {
+    display: inline-block;
+  }
+
+  .form-group__input {
+    position: relative;
+  }
+
+  .form-group__error {
+    display: none;
+    white-space: nowrap;
+    color: var(--red);
+    font-size: var(--font-size-0);
+    grid-row: 2;
+    grid-column: 2;
+    padding: var(--size-2);
+    text-align: center;
+  }
+
+  label span {
+    display: inline-block;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
