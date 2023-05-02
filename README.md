@@ -12,3 +12,9 @@ Cuando se esta escribiendo el correo
 
 Cuando el correo se valida
 [![Enviar3.png](https://i.postimg.cc/fynX9Rs7/Enviar3.png)](https://postimg.cc/341dM7dW)
+
+
+
+Ejemplo entro codigo 
+https://codepen.io/johnjairoac/pen/qBJXBWZ
+
