@@ -1,3 +1,4 @@
+![Banner de login](images/banner.png)
 # Enviar correo
 Muestro una de muchas formas de validar y enviar correos escalable con una animación moderna.
 
@@ -35,7 +36,7 @@ Este formulario HTML permite a los usuarios ingresar y enviar su dirección de c
 
 ![Ejemplo de Formulario de Correo Electrónico](images/enviar1.png)
 ![Ejemplo de Formulario de Correo Electrónico](images/enviar2.png)
-![Ejemplo de Formulario de Correo Electrónico](images/enviar2.png)
+![Ejemplo de Formulario de Correo Electrónico](images/enviar3.png)
 
 Este es un ejemplo de la pantalla del formulario para la captura de correo electrónico. La imagen `login1.png` debe estar en la misma carpeta que este archivo `README.md` o en una ruta accesible.
 
